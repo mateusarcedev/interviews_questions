@@ -1,12 +1,19 @@
 import fastify from 'fastify'
-import { knex } from './database'
+import { questionsRoutes } from './routes/questions'
+import { categoriesRoutes } from './routes/categories'
+import { answersRoutes } from './routes/answers'
+
 
 const app = fastify()
 
-app.get('/questions', async () => {
-    const tables = await knex('questions').select('*')
-
-    return tables
+app.register(questionsRoutes, {
+  prefix: 'questions'
+})
+app.register(categoriesRoutes, {
+  prefix: 'categories'
+})
+app.register(answersRoutes, {
+  prefix: 'answers'
 })
 
 app.listen({
