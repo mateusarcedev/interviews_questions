@@ -1,14 +1,14 @@
-import 'dotenv/config'
 import { knex as setupKnex, Knex } from 'knex'
+import { env } from './env'
 
 export const config:Knex.Config  = {
-  client: 'mysql2',
+  client: env.DATABASE_CLIENT,
   connection: {
-    host : '127.0.0.1',
-    port : 3306,
-    user : 'root',
-    password : '12345',
-    database : 'interviews_questions'
+    host : env.DATABASE_HOST,
+    port : env.DATABASE_PORT,
+    user : env.DATABASE_USER,
+    password : env.DATABASE_PASSWORD,
+    database : env.DATABASE_NAME
   },
 migrations: {
   extension: 'ts',
