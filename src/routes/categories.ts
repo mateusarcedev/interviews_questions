@@ -4,21 +4,28 @@ import { z } from "zod";
 import { randomUUID } from "node:crypto";
 
 export async function categoriesRoutes(app: FastifyInstance) {
-  app.post('/categories', async (request, reply) => {
-    
+
+  // Rota de listagem de categorias
+  app.get('/', async (request, reply) => {
+    const categories = await knex('categories').select()
+
+    return {categories}
+  })
+
+
+  // Rota de criação de categoria
+  app.post('/', async (request, reply) => {    
     const createCategoryBodySchema = z.object({
       name: z.string(),
-      description: z.string().optional()
+      description: z.string()
     })
-
     const { name, description } = createCategoryBodySchema.parse(request.body)
-
     await knex('categories').insert({
-      id: randomUUID(),
+      id: randomUUID(), 
       name,
       description
     })
-
     return reply.status(201).send('Categoria criada com sucesso!')
   })
+
 }
