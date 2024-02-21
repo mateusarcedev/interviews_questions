@@ -6,10 +6,7 @@ export async function up(knex: Knex): Promise<void> {
     table.uuid('id').primary()
     table.text('title').notNullable()
     table.uuid('category_id').notNullable().references('id').inTable('categories')
-  })
-
-  await knex.schema.alterTable('questions', (table) => {
-    table.unique('category_id')
+    table.timestamp('created_at').defaultTo(knex.fn.now()).notNullable
   })
 }
 
@@ -17,7 +14,6 @@ export async function up(knex: Knex): Promise<void> {
 export async function down(knex: Knex): Promise<void> {
   await knex.schema.table('questions', (table) => {
     table.dropForeign(['category_id']);
-    table.dropUnique(['category_id']);
   });
 
   await knex.schema.dropTable('questions');

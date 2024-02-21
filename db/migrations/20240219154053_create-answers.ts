@@ -6,6 +6,7 @@ export async function up(knex: Knex): Promise<void> {
     table.uuid('id').primary()
     table.text('answer').notNullable()
     table.uuid('question_id').notNullable().references('id').inTable('questions')
+    table.timestamp('created_at').defaultTo(knex.fn.now()).notNullable
   })
 }
 
