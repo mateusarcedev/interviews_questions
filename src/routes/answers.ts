@@ -7,7 +7,9 @@ export async function answersRoutes(app: FastifyInstance) {
 
   // Rota de listagem de respostas
   app.get('/', async () => {
-    const answers = await knex('answers').select('*')
+    const answers = await knex('answers')
+  .select('answers.*', 'questions.title')
+  .join('questions', 'answers.question_id', '=', 'questions.id');
 
     return {answers}
   })
