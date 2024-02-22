@@ -1,6 +1,6 @@
 # 💡 Site de Perguntas de Entrevista
 
-Este projeto tem como objetivo criar um site onde os desenvolvedores possam praticar perguntas e respostas de entrevistas relacionadas a várias tecnologias de programação. O site irá categorizar perguntas e respostas, permitindo que os usuários naveguem por perguntas por categoria e idioma (inicialmente suportando inglês e português). O backend da aplicação é desenvolvido usando Node.js com o framework Fastify para construir APIs e o Knex.js como o construtor de consultas SQL para interagir com o banco de dados MySQL.
+Este projeto tem como objetivo criar um site onde os desenvolvedores ter um acervo de perguntas e respostas de entrevistas relacionadas a várias tecnologias de programação. O site irá categorizar perguntas e respostas, permitindo que os usuários naveguem por perguntas por categoria e idioma (inicialmente suportando inglês e português). O backend da aplicação é desenvolvido usando Node.js com o framework Fastify para construir APIs e o Knex.js como o construtor de consultas SQL para interagir com o banco de dados MySQL.
 
 ## 🚀 Funcionalidades
 
