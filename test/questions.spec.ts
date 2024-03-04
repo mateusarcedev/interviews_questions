@@ -22,4 +22,11 @@ describe('Questions routes', () => {
       .expect(201)
   })
 
+
+  it('should be able to list all questions', async() => {
+    await request(app.server)
+    .get('/questions')
+    .expect(200)
+  })
+
 })
